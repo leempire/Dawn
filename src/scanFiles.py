@@ -11,7 +11,7 @@ def scanFiles(filepath):
         if os.path.isdir(path):
             queue += [os.path.join(path, file) for file in os.listdir(path)]
         else:
-            filename = os.path.split(path)[0]
+            filename = os.path.basename(path).split('.')[0]
             files[filename] = path
     return files
 
