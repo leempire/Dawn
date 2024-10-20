@@ -1,6 +1,8 @@
 # Dawn
 使用键盘打开应用程序、文件、文件夹
 
+---
+
 环境配置：Python3.10
 ```commandline
 pip install -r requirements.txt
