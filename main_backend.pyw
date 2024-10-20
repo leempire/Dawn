@@ -22,16 +22,15 @@ class Dawn(Robot):
             self.buffer = ''
             self.catching = False
         if state == 'down':  # 按下按键
+            if key == 'esc':  # ctrl + esc 退出
+                if 'ctrl' in self.get_pressed():
+                    exit()
             if self.catching:  # 正在捕获
                 if len(key) == 1:  # 单个字符
                     self.buffer += key
                 elif key == 'space':  # 结束捕获
                     threading.Thread(target=self.open, args=(self.buffer,), daemon=True).start()
                     self.catching = 0
-                elif key == 'esc':
-                    # ctrl + esc 退出
-                    if 'ctrl' in self.get_pressed():
-                        exit()
             else:  # 未开始捕获
                 if key == '`':
                     # 开始捕获
